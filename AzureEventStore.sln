@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25123.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AzureEventSourcing", "AzureEventStore\AzureEventSourcing.csproj", "{C38C9217-2AD8-4F14-B509-994494229A1F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "App", "App\App.csproj", "{7C5D5498-A73C-4654-B016-373BDE8110EE}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C38C9217-2AD8-4F14-B509-994494229A1F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C38C9217-2AD8-4F14-B509-994494229A1F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C38C9217-2AD8-4F14-B509-994494229A1F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C38C9217-2AD8-4F14-B509-994494229A1F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7C5D5498-A73C-4654-B016-373BDE8110EE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7C5D5498-A73C-4654-B016-373BDE8110EE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7C5D5498-A73C-4654-B016-373BDE8110EE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7C5D5498-A73C-4654-B016-373BDE8110EE}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

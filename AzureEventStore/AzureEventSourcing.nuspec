@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>AzureEventSourcing</id>
+    <version>1.0.0</version>
+    <title>Azure Event Sourcing</title>
+    <authors>Dmitrijs</authors>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Event stream and message storage in Azure</description>
+    <copyright>Copyright 2016</copyright>
+    <tags>Azure</tags>
+    <dependencies>
+      <dependency id="WindowsAzure.Storage" version="7.0.0" />
+      <dependency id="NewId" version="2.1.3" />
+      <dependency id="Newtonsoft.Json" version="6.0.8" />
+    </dependencies>
+  </metadata>
+  <files>
+    <file src="bin\Release\AzureEventSourcing.dll" target="lib\net45" />
+  </files>
+</package>
