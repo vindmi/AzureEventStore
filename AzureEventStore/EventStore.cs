@@ -44,6 +44,7 @@ namespace AzureEventSourcing
         public IEnumerable<Event> GetStream(EventSource eventSource)
         {
             return eventStore.GetPartition(GetEventPartitionKey(eventSource))
+                .OrderBy(o => o.Timestamp)
                 .Select(e => new Event(e.RowKey, eventSource, e.MessageId, serializer.Deserialize(new SerializedPayload(e.Payload, e.Type))))
                 .ToArray();
         }
@@ -51,6 +52,7 @@ namespace AzureEventSourcing
         public IEnumerable<Event> GetStream(string messageId)
         {
             return eventStore.GetPartition(GetMessagePartitionKey(messageId))
+                .OrderBy(o => o.Timestamp)
                 .Select(e =>
                 {
                     var deserialized = serializer.Deserialize(new SerializedPayload(e.Payload, e.Type));
