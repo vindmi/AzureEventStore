@@ -1,9 +1,9 @@
+using Microsoft.WindowsAzure.Storage;
+using Microsoft.WindowsAzure.Storage.Table;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics.Contracts;
 using System.Linq;
-using Microsoft.WindowsAzure.Storage;
-using Microsoft.WindowsAzure.Storage.Table;
 
 namespace AzureEventSourcing
 {
@@ -24,21 +24,22 @@ namespace AzureEventSourcing
         public void SetSynchronized(string eventId, EventSource eventSource, DateTimeOffset syncTime)
         {
             var id = new EntityId(eventId, GetEventPartitionKey(eventSource));
+            var entity = SetSynchronized(id, syncTime);
+            SetSynchronized(new EntityId(eventId, GetMessagePartitionKey(entity.MessageId)), syncTime);
+        }
 
+        private EventEntity SetSynchronized(EntityId id, DateTimeOffset syncTime)
+        {
             var entity = eventStore.GetSingle(id);
 
             if (entity == null)
             {
-                throw new AzureTableStoreException("Entity not found");
+                throw new AzureTableStoreException($"Entity not found (rowKey: {id.RowKey}; particionKey: {id.ParitionKey}");
             }
 
             entity.SynchronizedAt = syncTime;
-
             eventStore.Update(entity);
-
-            entity.PartitionKey = GetMessagePartitionKey(entity.MessageId);
-
-            eventStore.Update(entity);
+            return entity;
         }
 
         public IEnumerable<Event> GetStream(EventSource eventSource)
